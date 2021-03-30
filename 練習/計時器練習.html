@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p {
+        color: blue
+    }
+</style>
+
+<body>
+
+    <p></p>
+    <script>
+        let input = prompt()
+        let timer = setInterval(() => {
+            input--
+            if (input >= 0) {
+                const sec = document.querySelector('p')
+                sec.innerText = `剩餘${input + 1}秒`
+                sec.style.color = 'blue'
+            }
+
+            else {
+                clearInterval(timer)
+                const sec = document.querySelector('p')
+                sec.innerText = '時間到'
+                sec.style.color = 'red'
+            }
+
+
+
+
+        }, 500);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
