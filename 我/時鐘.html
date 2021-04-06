@@ -22,13 +22,19 @@
 
     .container {
         height: 100%;
-        background: black;
+        background: yellow;
         position: relative;
     }
 
+    h1 {
+        text-align: center;
+        color: white;
+
+    }
+
     #clock {
-        width: 500px;
-        height: 500px;
+        width: 300px;
+        height: 300px;
         background: blue;
         border-radius: 50%;
         margin: auto;
@@ -75,12 +81,14 @@
 
 <body>
     <div class="container">
+        <h1 id="text"></h1>
         <div id="clock">
             <div id="hour"></div>
             <div id="minute"></div>
             <div id="second"></div>
         </div>
     </div>
+
     <script>
         const hour = document.getElementById('hour')
         const minute = document.getElementById('minute')
@@ -93,7 +101,9 @@
             hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
             minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
             second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
+            text.innerText = `現在時間:${now.toLocaleString("zh-tw")}`
         }
+
         setInterval(update, 1000)
         update()
     </script>
