@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .container {
+        height: 100%;
+        background: url(./cb9e2b2a6ee515ca9938d6925e1145b7.jpg);
+        background-size: cover;
+        position: relative;
+    }
+
+    #clock {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translateX(-50%);
+        background-image: url(./unnamed.jpg);
+        background-size: cover;
+        border: solid 10px #091921;
+        box-shadow:
+            0 -15px 15px rgba(255, 255, 255, 0.05),
+            inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+            0 15px 15px rgba(0, 0, 0, 0.3),
+            inset 0 15px 15px rgba(0, 0, 0, 0.3);
+
+    }
+
+    #hour {
+        width: 25%;
+        height: 5px;
+        border-radius: 50px;
+        background: black;
+        position: absolute;
+        /* calc 電腦計算 */
+        top: calc(50% - 2px);
+        left: 50%;
+        transform-origin: left center;
+
+    }
+
+    #minute {
+        width: 35%;
+        height: 4px;
+        border-radius: 50px;
+        background: black;
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 50%;
+        transform-origin: left center;
+    }
+
+    #second {
+        width: 40%;
+        height: 2px;
+        border-radius: 50px;
+        background: black;
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 50%;
+        transform-origin: left center;
+    }
+
+    #second:before {
+        content: "";
+        border-radius: 5px;
+        background: black;
+        position: absolute;
+        top: -37.5px;
+        width: 1px;
+        height: 75px;
+        transform-origin: left center;
+        transform: rotate(90deg);
+
+
+
+    }
+
+    .center {
+        width: 5%;
+        height: 5%;
+        border-radius: 50%;
+        background: lightslategray;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .scale div {
+        width: 2px;
+        height: 10px;
+        background: black;
+        position: absolute;
+        left: 50%;
+        top: 5px;
+        transform-origin: 0 145px;
+    }
+
+    .scale div:nth-child(1) {
+        transform: rotate(30deg);
+    }
+
+    .scale div:nth-child(2) {
+        transform: rotate(60deg);
+    }
+
+    .scale div:nth-child(3) {
+        transform: rotate(90deg);
+    }
+
+    .scale div:nth-child(4) {
+        transform: rotate(120deg);
+    }
+
+    .scale div:nth-child(5) {
+        transform: rotate(150deg);
+    }
+
+    .scale div:nth-child(6) {
+        transform: rotate(180deg);
+    }
+
+    .scale div:nth-child(7) {
+        transform: rotate(210deg);
+    }
+
+    .scale div:nth-child(8) {
+        transform: rotate(240deg);
+    }
+
+    .scale div:nth-child(9) {
+        transform: rotate(270deg);
+    }
+
+    .scale div:nth-child(10) {
+        transform: rotate(300deg);
+    }
+
+    .scale div:nth-child(11) {
+        transform: rotate(330deg);
+    }
+
+    .scale div:nth-child(12) {
+        transform: rotate(360deg);
+    }
+
+    #time {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: inline-block;
+        font-size: 3rem;
+        position: absolute;
+        left: 50%;
+        top: 75%;
+        transform: translate(-50%);
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="time"></div>
+        <div id="clock">
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+            <div class="center"></div>
+            <div class="scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="time"> </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const hour = document.getElementById('hour')
+        const minute = document.getElementById('minute')
+        const second = document.getElementById('second')
+        const time = document.getElementById('time')
+
+        const update = () => {
+            const now = new Date()
+            // 360度 有12個小時 一小時走360/12 = 30度
+            // 因為針原來是躺著90度 所以要-90度讓針逆時針初始方向指向12的方向
+            hour.style.transform = `rotate(${now.getHours() * 30 - 90}deg)`
+            minute.style.transform = `rotate(${now.getMinutes() * 6 - 90}deg)`
+            second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
+            time.innerText = `${now.toLocaleString("zh-tw")}`
+        }
+        setInterval(update, 1000)
+        update()
+    </script>
+</body>
+
+</html>
