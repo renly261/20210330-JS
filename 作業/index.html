@@ -22,7 +22,7 @@
 
     .container {
         height: 100%;
-        background: url(./cb9e2b2a6ee515ca9938d6925e1145b7.jpg);
+        background: url(./images/bakground.jpg);
         background-size: cover;
         position: relative;
     }
@@ -36,7 +36,7 @@
         left: 50%;
         top: 5%;
         transform: translateX(-50%);
-        background-image: url(./unnamed.jpg);
+        background-image: url(./images/clok\ background.jpg);
         background-size: cover;
         border: solid 10px #091921;
         box-shadow:
@@ -44,7 +44,6 @@
             inset 0 -15px 15px rgba(255, 255, 255, 0.05),
             0 15px 15px rgba(0, 0, 0, 0.3),
             inset 0 15px 15px rgba(0, 0, 0, 0.3);
-
     }
 
     #hour {
@@ -57,7 +56,6 @@
         top: calc(50% - 2px);
         left: 50%;
         transform-origin: left center;
-
     }
 
     #minute {
@@ -92,9 +90,6 @@
         height: 75px;
         transform-origin: left center;
         transform: rotate(90deg);
-
-
-
     }
 
     .center {
@@ -166,6 +161,63 @@
         transform: rotate(360deg);
     }
 
+    .num div {
+        position: absolute;
+        left: 48%;
+        top: 9%;
+        transform-origin: 5px 125px;
+        font-size: 20px;
+        color: black;
+    }
+
+    .num div:nth-child(1) {
+        transform: rotate(30deg);
+    }
+
+    .num div:nth-child(2) {
+        transform: rotate(60deg);
+    }
+
+    .num div:nth-child(3) {
+        transform: rotate(90deg);
+    }
+
+    .num div:nth-child(4) {
+        transform: rotate(120deg);
+    }
+
+    .num div:nth-child(5) {
+        transform: rotate(150deg);
+    }
+
+    .num div:nth-child(6) {
+        transform: rotate(180deg);
+    }
+
+    .num div:nth-child(7) {
+        transform: rotate(210deg);
+    }
+
+    .num div:nth-child(8) {
+        transform: rotate(240deg);
+    }
+
+    .num div:nth-child(9) {
+        transform: rotate(270deg);
+    }
+
+    .num div:nth-child(10) {
+        transform: rotate(300deg);
+    }
+
+    .num div:nth-child(11) {
+        transform: rotate(330deg);
+    }
+
+    .num div:nth-child(12) {
+        transform: rotate(360deg);
+    }
+
     #time {
         background: rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -177,9 +229,68 @@
         font-size: 3rem;
         position: absolute;
         left: 50%;
-        top: 75%;
+        top: 85%;
         transform: translate(-50%);
+    }
 
+    .main {
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        left: -25%;
+        top: 110%;
+    }
+
+    .left {
+        width: 53px;
+        height: 198px;
+        position: absolute;
+        left: -3%;
+        top: 110%;
+        animation: animate 1s ease-in-out infinite normal
+    }
+
+    .right {
+        width: 80px;
+        height: 195px;
+        position: absolute;
+        left: 81%;
+        top: 110%;
+        animation: animate1 1s ease-in-out infinite normal
+    }
+
+    @keyframes animate {
+        from {
+            transform-origin: 50px 0px;
+            transform: rotate(0deg)
+        }
+
+        50% {
+            transform-origin: 50px 0px;
+            transform: rotate(30deg)
+        }
+
+        to {
+            transform-origin: 50px 0px;
+            transform: rotate(0deg)
+        }
+    }
+
+    @keyframes animate1 {
+        from {
+            transform-origin: 50px 0px;
+            transform: rotate(-30deg)
+        }
+
+        50% {
+            transform-origin: 50px 0px;
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform-origin: 50px 0px;
+            transform: rotate(-30deg)
+        }
     }
 </style>
 
@@ -205,7 +316,24 @@
                 <div></div>
                 <div></div>
             </div>
+            <div class="num">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+            </div>
             <div id="time"> </div>
+            <div><img src="./images/main.png" alt="" class="main"></div>
+            <div><img src="./images/left.png" alt="" class="left"></div>
+            <div><img src="./images/right.png" alt="" class="right"></div>
         </div>
     </div>
     </div>
@@ -224,6 +352,7 @@
             second.style.transform = `rotate(${now.getSeconds() * 6 - 90}deg)`
             time.innerText = `${now.toLocaleString("zh-tw")}`
         }
+
         setInterval(update, 1000)
         update()
     </script>
